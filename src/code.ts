@@ -30,7 +30,6 @@ async function createDynamicImage(value: string) {
 async function updateImageWithDynamicContent() {
   const selectedNode = figma.currentPage.selection[0];
 
-  // Function to recursively find all layers named "metric-value"
   function findImageLayers(node: SceneNode): Array<{ imageLayer: SceneNode, textValue: string }> {
     let results: Array<{ imageLayer: SceneNode, textValue: string }> = [];
 
@@ -60,11 +59,9 @@ async function updateImageWithDynamicContent() {
     return results;
   }
 
-  // Find and update all image layers in the selection
   if (selectedNode) {
     const imageLayers = findImageLayers(selectedNode);
 
-    // Update each image layer with its corresponding text value
     for (const { imageLayer, textValue } of imageLayers) {
       if ('fills' in imageLayer) {
         const imageHash = await createDynamicImage(textValue);
@@ -85,7 +82,6 @@ async function updateImageWithDynamicContent() {
   figma.closePlugin();
 }
 
-// // Execute the function
 loadFonts().then(() => {
   updateImageWithDynamicContent().catch((error) => {
     console.error('Error updating image:', error);

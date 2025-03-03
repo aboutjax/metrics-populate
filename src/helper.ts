@@ -16,6 +16,9 @@ export function getTextValue(label: string) {
         case "current gear":
             // Front gear - Back gear combination
             return `${randomInt(1, 2)}–${randomInt(1, 11)}`;
+        case "speed (km/h)":
+            // Typical cycling speed
+            return randomFloat(15, 45, 1).toString();
         case "speed (kph)":
             // Typical cycling speed
             return randomFloat(15, 45, 1).toString();
