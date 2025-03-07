@@ -77,6 +77,8 @@ export function getTextValue(label: string) {
             return formatDuration(randomInt(2, 10));
         case "calorie/hr (cal/hr)":
             return randomInt(200, 400).toString();
+        case "time of day":
+            return `${randomInt(0, 23)}:${randomInt(0, 59)}`;
         default:
             return "000";
     }
